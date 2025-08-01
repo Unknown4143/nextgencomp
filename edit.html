@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Next Gen Enterprises</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: sans-serif;
+      background: #000;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    #particle-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -10;
+      width: 100%;
+      height: 100%;
+      background: #000;
+    }
+
+    #welcome-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      transition: opacity 1s ease;
+    }
+
+    #welcome-screen h1 {
+      color: #ff0000;
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    #welcome-screen p {
+      color: #ccc;
+      font-size: 1.2rem;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background: #111;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      border-bottom: 1px solid #ff0000;
+      z-index: 100;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ff0000;
+    }
+
+    header {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      animation: fadeIn 2s ease-in;
+    }
+
+    header img {
+      width: 150px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin: 20px 0 10px;
+      color: #ff0000;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #ccc;
+    }
+
+    header .btn {
+      margin-top: 30px;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      background: #ff0000;
+      color: #000;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    header .btn:hover {
+      background: #e00000;
+    }
+
+    section {
+      padding: 60px 20px;
+      border-top: 1px solid #ff0000;
+      animation: fadeIn 2s ease-in;
+    }
+
+    .services {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .service {
+      width: 250px;
+      margin: 20px;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .service h3 {
+      color: #ff0000;
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .service img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    #contact p, #contact a {
+      text-align: center;
+      color: #ccc;
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      text-decoration: none;
+    }
+
+    #contact a:hover {
+      color: #ff0000;
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="particle-bg"></canvas>
+
+  <div id="welcome-screen">
+    <h1>Welcome to Next Gen Enterprises</h1>
+    <p>Loading... Please wait</p>
+  </div>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="services.html" target="_blank">Services</a>
+    <a href="#products">Products</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <header id="home">
+    <img src="logo.jpg" alt="Next Gen Logo">
+    <h1>We Are Next Gen Enterprises</h1>
+    <p>Performing with Excellence in Tech Supplies</p>
+    <button class="btn" onclick="scrollToSection('products')">Our Products</button>
+  </header>
+
+  <!-- Products Section -->
+  <section id="products">
+    <h2 style="color:#ff0000; text-align:center;">Our IT Products</h2>
+    <div class="services">
+      <div class="service">
+        <img src="networking.jpg" alt="Networking">
+        <h3>Networking</h3>
+        <button class="btn" onclick="scrollToSection('contact')">Explore</button>
+      </div>
+      <div class="service">
+        <img src="laptop.jpg" alt="Laptop">
+        <h3>Laptops</h3>
+        <button class="btn" onclick="scrollToSection('contact')">Explore</button>
+      </div>
+      <div class="service">
+        <img src="storage.jpg" alt="Storage">
+        <h3>Storage</h3>
+        <button class="btn" onclick="scrollToSection('contact')">Explore</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2 style="color:#ff0000; text-align:center;">Contact Us</h2>
+    <p>📍 Vidyut Nagar, V.M.V. Road, Amravati</p>
+    <p>📞 <a href="tel:9765291838">9765291838</a></p>
+    <p>📧 <a href="mailto:nextgencomp.deal@email.com">nextgencomp.deal@email.com</a></p>
+  </section>
+
+  <script>
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+
+    window.onload = () => {
+      setTimeout(() => {
+        const welcome = document.getElementById('welcome-screen');
+        welcome.style.opacity = '0';
+        setTimeout(() => {
+          welcome.style.display = 'none';
+        }, 1000);
+      }, 2500);
+    };
+
+    // Particles
+    const canvas = document.getElementById('particle-bg');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    window.onresize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+    
+
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.radius = Math.random() * 2;
+        this.speedX = (Math.random() - 0.5) * 1.5;
+        this.speedY = (Math.random() - 0.5) * 1.5;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(255,0,0,0.6)";
+        ctx.fill();
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+        this.draw();
+      }
+    }
+
+    function initParticles() {
+      particles = [];
+      for (let i = 0; i < 100; i++) {
+        particles.push(new Particle());
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => p.update());
+      requestAnimationFrame(animate);
+    }
+
+    initParticles();
+    animate();
+  </script>
+</body>
+</html>
